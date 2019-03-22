@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/22 15:11:15 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/22 17:49:18 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "libft/libft.h"
 #include <math.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 # define HEIGHT 1000
 # define WIDTH	1000
@@ -52,11 +53,23 @@ typedef	struct	s_mlx
 	int			endian;
 }				t_mlx;
 
+typedef struct	s_dim
+{
+	/*
+	**	Real and imaginary dimensions for image with complex numbers
+	*/
+
+	double		min_real; 	//	= -2.0;
+	double		max_real; 	//	= 1.0;
+	double		min_imagine; //	= -1.2;
+	double		max_imagine; //	= MinIm+(MaxRe-MinRe)*ImageHeight/ImageWidth;
+}				t_dim;
+
 /*
-**	Initializers
+**	Fractol functions
 */
 
-// void			init_window(void);
+void	draw_mandelbrot(void);
 
 /*
 **	Error handlers

@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   event_handlers.c                                   :+:    :+:            */
+/*   mandelbrot.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/22 16:52:03 by nvreeke       ########   odam.nl         */
+/*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
+/*   Updated: 2019/03/22 17:48:49 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		deal_key(int key)
+void		set_image_dims(void)
 {
-	if (key == KEY_ESC)
-		exit(0);
-	return (0);
+	t_dim	*dim;
+	
+	dim = MEM(t_dim);
+	dim->min_real = -2.0;
+	dim->max_real = 1.0;
+	dim->min_imagine = -1.2;
+	dim->max_imagine = dim->min_imagine + (dim->max_real - dim->min_real) * HEIGHT / WIDTH;
+}
+
+void	draw_mandelbrot(void)
+{
+	set_image_dims();
 }
