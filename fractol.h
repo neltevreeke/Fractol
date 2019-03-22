@@ -6,9 +6,12 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/22 14:19:38 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/22 15:11:15 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 #include "minilibx_macos/mlx.h"
 #include "libft/libft.h"
@@ -24,6 +27,10 @@
 */
 
 # define KEY_ESC 53
+# define KEY_UP 126
+# define KEY_RIGHT 124
+# define KEY_LEFT 123
+# define KEY_DOWN 125
 
 typedef	struct	s_mlx
 {
@@ -49,7 +56,7 @@ typedef	struct	s_mlx
 **	Initializers
 */
 
-void			init_window(void);
+// void			init_window(void);
 
 /*
 **	Error handlers
@@ -58,7 +65,9 @@ void			init_window(void);
 void			no_params(void);
 
 /*
-**	Error handlers
+**	Event (key, mouse) handlers
 */
 
 int				deal_key(int key);
+
+#endif
