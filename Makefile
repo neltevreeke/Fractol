@@ -6,7 +6,7 @@
 #    By: nvreeke <nvreeke@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/22 13:27:36 by nvreeke        #+#    #+#                 #
-#    Updated: 2019/03/22 12:08:22 by nvreeke       ########   odam.nl          #
+#    Updated: 2019/03/22 14:18:18 by nvreeke       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,16 @@ LIBS = ./libft/libft.a
 all: $(BINARY)
 
 $(BINARY):
-	$(GCC) -g $(SRCS) -I/usr/X11/includes $(FLAGS) $(LIBS)
+	@echo "Compiling..."
+	@$(GCC) -g $(SRCS) -I/usr/X11/includes $(FLAGS) $(LIBS)
+	@echo "Done"
 
 clean:
-	rm -rf *.o
+	@echo "Removing object files"
+	@rm -rf *.o
 
 fclean: clean
-	rm -rf $(BINARY)
+	@echo "Removing binary"
+	@rm -rf $(BINARY)
 
 re: fclean all
