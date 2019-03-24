@@ -24,19 +24,27 @@ t_mlx		*init_window(char *fractol_name)
 	return (mlx);
 }
 
-void		check_fractol(char *fractol_name)
+void		check_fractol(char *fractol_name, t_mlx *mlx)
 {
+	t_dim *dim;
+
+	dim = MEM(t_dim);
 	/*
 	**	Check what Fractol needs to be drawn.
 	**	Error if Fractol does not exist and list other fractols as error.
 	*/
 	if (ft_strcmp(fractol_name, "Mandelbrot") == 0 || ft_strcmp(fractol_name, "mandelbrot") == 0)
-		draw_mandelbrot();
+		draw_mandelbrot(dim, mlx);
+	else if (ft_strcmp(fractol_name, "Julia") == 0 || ft_strcmp(fractol_name, "julia") == 0)
+	{
+		// Juliet draw function
+	}
 	else
 	{
 		ft_putendl("This is not a correct Fractol, use: Mandelbrot, Juliet, or .....");
 		exit(0);
 	}
+	
 }
 
 void		fractol(char *fractol_name)
@@ -44,7 +52,7 @@ void		fractol(char *fractol_name)
 	t_mlx	*mlx;
 
 	mlx = init_window(fractol_name);
-	check_fractol(fractol_name);
+	check_fractol(fractol_name, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
 	mlx_loop(mlx->init);
 }

@@ -22,6 +22,7 @@
 # define HEIGHT 1000
 # define WIDTH	1000
 # define MEM(x) (x*)ft_memalloc(sizeof(x))
+# define MAX_IT 150
 
 /*
 **	Int key defines
@@ -63,13 +64,15 @@ typedef struct	s_dim
 	double		max_real; 	//	= 1.0;
 	double		min_imagine; //	= -1.2;
 	double		max_imagine; //	= MinIm+(MaxRe-MinRe)*ImageHeight/ImageWidth;
+	double		re_factor;
+	double		im_factor;
 }				t_dim;
 
 /*
 **	Fractol functions
 */
 
-void	draw_mandelbrot(void);
+void	draw_mandelbrot(t_dim *dim, t_mlx *mlx);
 
 /*
 **	Error handlers
