@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/22 17:49:18 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/25 17:33:53 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-# define HEIGHT 1000
+# define HEIGHT 600
 # define WIDTH	1000
 # define MEM(x) (x*)ft_memalloc(sizeof(x))
-# define MAX_IT 150
 
 /*
 **	Int key defines
@@ -33,6 +32,22 @@
 # define KEY_RIGHT 124
 # define KEY_LEFT 123
 # define KEY_DOWN 125
+# define KEY_X 7
+# define KEY_Z 6
+
+/*
+**	Int mouse defines
+*/
+
+# define MOUSE_UP 4
+# define MOUSE_DOWN 5
+
+typedef struct s_point
+{
+	long double x;
+	long double y;
+}				t_point;
+
 
 typedef	struct	s_mlx
 {
@@ -52,38 +67,34 @@ typedef	struct	s_mlx
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
+
+	t_point		position;
+	t_point		c;
+	int			max_it;
+	long double	zoom;
+
+	void		(*process)(struct s_mlx *mlx);
 }				t_mlx;
-
-typedef struct	s_dim
-{
-	/*
-	**	Real and imaginary dimensions for image with complex numbers
-	*/
-
-	double		min_real; 	//	= -2.0;
-	double		max_real; 	//	= 1.0;
-	double		min_imagine; //	= -1.2;
-	double		max_imagine; //	= MinIm+(MaxRe-MinRe)*ImageHeight/ImageWidth;
-	double		re_factor;
-	double		im_factor;
-}				t_dim;
 
 /*
 **	Fractol functions
 */
 
-void	draw_mandelbrot(t_dim *dim, t_mlx *mlx);
+void			draw_mandelbrot(t_mlx *mlx);
+int				process_fract(t_mlx *mlx);
 
 /*
 **	Error handlers
 */
 
 void			no_params(void);
+void			no_fractol(void);
 
 /*
 **	Event (key, mouse) handlers
 */
 
-int				deal_key(int key);
+int				deal_key(int key, t_mlx *mlx);
+int				deal_mouse(int button, int x, int y, t_mlx *mlx);
 
 #endif

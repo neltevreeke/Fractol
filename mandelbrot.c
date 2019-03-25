@@ -6,58 +6,54 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/22 17:48:49 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/25 16:34:44 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		set_image_dims(t_dim *dim)
+void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 {
-	dim->min_real = -2.0;
-	dim->max_real = 1.0;
-	dim->min_imagine = -1.2;
-	dim->max_imagine = dim->min_imagine + (dim->max_real - dim->min_real) * HEIGHT / WIDTH;
-	dim->re_factor = (dim->max_real - dim->min_real) / (WIDTH - 1);
- 	dim->im_factor = (dim->max_imagine - dim->min_imagine) / (HEIGHT - 1);
+	int i;
+
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		i = (x * mlx->bits_per_pixel / 8) + (y * mlx->size_line);
+		mlx->data_addr[i] = color;
+		mlx->data_addr[++i] = color << 8;
+		mlx->data_addr[++i] = color << 16;
+	}
 }
 
-void	draw_mandelbrot(t_dim *dim, t_mlx *mlx)
+void		draw_mandelbrot(t_mlx *mlx)
 {
 	int y;
 	int x;
-	unsigned int n;
-	set_image_dims(dim);
-	mlx_destroy_image(mlx->init, mlx->image);
+	t_point z;
+	double x_new;
+	int n;
 
 	y = 0;
-	x = 0;
-	n = 0;
 	while (y < HEIGHT)
 	{
-		double c_im = dim->max_imagine - y * dim->im_factor;
+		x = 0;
 		while (x < WIDTH)
 		{
-			double c_real = dim->min_real + x * dim->re_factor;
-
-			double z_real = c_real;
-			double z_imagine = c_im;
-			double isInside = 1;
-			while (n < MAX_IT)
+			mlx->c.x = mlx->position.x + ((x - WIDTH * .5) * 4 / WIDTH) * mlx->zoom;
+			mlx->c.y = mlx->position.y + ((y - HEIGHT * .5) * 4 / WIDTH) * mlx->zoom;
+			z = mlx->c;
+			n = 0;
+			while (z.x + z.y <= 2 && n < mlx->max_it)
 			{
-				double Z_re2 = z_real * z_real, z_im2 = z_imagine * z_imagine;
-
-				if (z_real * z_real + z_imagine * z_imagine > 4)
-				{
-					isInside = 0;
-					break ;
-				}
-				z_imagine = 2 * z_real * z_imagine + c_im;
-				z_real = Z_re2 - z_im2 + c_real;
+				x_new = z.x * z.x - z.y * z.y + mlx->c.x;
+				z.y = 2 * z.x * z.y + mlx->c.y;
+				z.x = x_new;
 				n++;
 			}
-			if (isInside)
-				mlx_pixel_put(mlx->init, mlx->win, x, y, 0xFF << 8);
+			if (n < mlx->max_it)
+				put_pixel_to_img(mlx, x, y, 0xFF);
+			else
+				put_pixel_to_img(mlx, x, y, 0x000000);
 			x++;
 		}
 		y++;
