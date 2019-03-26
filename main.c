@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/25 16:36:06 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/26 14:31:59 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int			process_fract(t_mlx *mlx)
 void		check_fractol(char *fractol_name, t_mlx *mlx)
 {
 	if (ft_strcmp(fractol_name, "Mandelbrot") == 0 || ft_strcmp(fractol_name, "mandelbrot") == 0)
-		mlx->process = &draw_mandelbrot;
+		mlx->process = &process_mandelbrot;
 	else if (ft_strcmp(fractol_name, "Julia") == 0 || ft_strcmp(fractol_name, "julia") == 0)
 	{
-		// Juliet draw function
+		// Julia draw function
 		// mlx->process = &draw_julia;
 	}
 	else

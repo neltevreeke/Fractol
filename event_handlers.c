@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/25 16:47:03 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/26 14:56:14 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int		deal_key(int key, t_mlx *mlx)
 	if (key == KEY_ESC)
 		exit(0);
 	if (key == KEY_UP)
-		mlx->position.y += 0.02;
+		mlx->position.y += 0.05 * mlx->zoom;
 	if (key == KEY_DOWN)
-		mlx->position.y -= 0.02;
+		mlx->position.y -= 0.05 * mlx->zoom;
 	if (key == KEY_LEFT)
-		mlx->position.x += 0.02;
+		mlx->position.x += 0.05 * mlx->zoom;
 	if (key == KEY_RIGHT)
-		mlx->position.x -= 0.02;
+		mlx->position.x -= 0.05 * mlx->zoom;
 	if (key == KEY_X)
 	{
 		mlx->max_it += 5;
-		if (mlx->max_it > 90)
-			mlx->max_it = 90;
+		if (mlx->max_it > 140)
+			mlx->max_it = 140;
 	}
 	if (key == KEY_Z)
 	{

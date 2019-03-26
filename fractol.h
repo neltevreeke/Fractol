@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/25 17:33:53 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/26 14:31:33 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <pthread.h>
 
 # define HEIGHT 600
 # define WIDTH	1000
 # define MEM(x) (x*)ft_memalloc(sizeof(x))
+# define NUM_THREADS 100
 
 /*
 **	Int key defines
@@ -73,6 +75,9 @@ typedef	struct	s_mlx
 	int			max_it;
 	long double	zoom;
 
+	int			cur_y;
+	int			max_y;
+	
 	void		(*process)(struct s_mlx *mlx);
 }				t_mlx;
 
@@ -80,8 +85,13 @@ typedef	struct	s_mlx
 **	Fractol functions
 */
 
-void			draw_mandelbrot(t_mlx *mlx);
 int				process_fract(t_mlx *mlx);
+
+/*
+**	Pthread functions
+*/
+
+void		process_mandelbrot(t_mlx *mlx);
 
 /*
 **	Error handlers
