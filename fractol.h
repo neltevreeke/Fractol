@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/26 14:31:33 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/27 18:07:50 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,17 @@ typedef	struct	s_mlx
 	int			max_it;
 	long double	zoom;
 
+	/*
+	**	Pthread stuff
+	*/
+
 	int			cur_y;
 	int			max_y;
 	
 	void		(*process)(struct s_mlx *mlx);
 }				t_mlx;
+
+int				c_pallette(double n, t_point z, t_mlx *mlx);
 
 /*
 **	Fractol functions
@@ -91,7 +97,7 @@ int				process_fract(t_mlx *mlx);
 **	Pthread functions
 */
 
-void		process_mandelbrot(t_mlx *mlx);
+void			process_mandelbrot(t_mlx *mlx);
 
 /*
 **	Error handlers
