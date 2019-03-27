@@ -85,6 +85,10 @@ typedef	struct	s_mlx
 	void		(*process)(struct s_mlx *mlx);
 }				t_mlx;
 
+/*
+**	Color functions
+*/
+
 int				c_pallette(double n, t_point z, t_mlx *mlx);
 
 /*

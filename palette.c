@@ -34,5 +34,5 @@ int		c_pallette(double n, t_point z, t_mlx *mlx)
 	green = bright;
 	if (n == mlx->max_it || bright < 40)
 		bright = 0;
-	return (bright);
+	return (red);
 }

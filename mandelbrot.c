@@ -19,11 +19,15 @@ void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 	i = (y * WIDTH + x) * 4;
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
+		// blauw:
 		mlx->data_addr[i] = color;
 		i++;
+		// groen:
 		mlx->data_addr[i] = color;
 		i++;
+		// rood:
 		mlx->data_addr[i] = color;
+		i++;
 	}
 }
 
