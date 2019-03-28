@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/27 18:07:50 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/28 15:12:26 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef	struct	s_mlx
 **	Color functions
 */
 
-int				c_pallette(double n, t_point z, t_mlx *mlx);
+int		c_pallette(int n, t_point z, t_mlx *mlx);
 
 /*
 **	Fractol functions
