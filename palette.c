@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:09:09 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 13:52:34 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 14:18:25 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,23 @@
 double		dot_product(t_point p)
 {
 	return (p.x * p.x + p.y * p.y);
+}
+
+
+void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
+{
+	int i;
+
+	i = (y * WIDTH + x) * 4;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		mlx->data_addr[i] = color;
+		i++;
+		mlx->data_addr[i] = color >> 8;
+		i++;
+		mlx->data_addr[i] = color >> 16;
+		i++;
+	}
 }
 
 int			c_pallette(int n, t_point z, t_mlx *mlx)

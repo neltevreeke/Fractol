@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   mandelbrot.c                                       :+:    :+:            */
+/*   julia.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 14:18:19 by nvreeke       ########   odam.nl         */
+/*   Created: 2019/03/29 14:01:12 by nvreeke        #+#    #+#                */
+/*   Updated: 2019/03/29 14:29:49 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void		*draw_mandelbrot(void *data)
+void        *draw_julia(void *data)
 {
-	int x;
+    int x;
 	t_point z;
 	t_mlx *mlx;
 	double x_new;
@@ -32,8 +32,8 @@ void		*draw_mandelbrot(void *data)
 			n = 0;
 			while (n < mlx->max_it)
 			{
-				x_new = z.x * z.x - z.y * z.y + mlx->c.x;
-				z.y = 2 * z.x * z.y + mlx->c.y;
+				x_new = z.x * z.x - z.y * z.y - 0.8;
+				z.y = 2 * z.x * z.y + 0.156;
 				z.x = x_new;
 				if (fabsl(z.x + z.y) > 6)
 					break ;
@@ -45,10 +45,10 @@ void		*draw_mandelbrot(void *data)
 		}
 		mlx->cur_y++;
 	}
-	return (data);
+    return (data);
 }
 
-void		process_mandelbrot(t_mlx *mlx)
+void		process_julia(t_mlx *mlx)
 {
 	int			i;
 	pthread_t	threads[NUM_THREADS];
@@ -60,7 +60,7 @@ void		process_mandelbrot(t_mlx *mlx)
 		ft_memcpy(&thread_args[i], mlx, sizeof(t_mlx));
 		mlx->max_y = (i + 1) * (HEIGHT / NUM_THREADS);
 		mlx->cur_y = i * (HEIGHT / NUM_THREADS);
-		pthread_create(&threads[i], NULL, draw_mandelbrot, &thread_args[i]);
+		pthread_create(&threads[i], NULL, draw_julia, &thread_args[i]);
 		i++;
 	}
 	while (i)

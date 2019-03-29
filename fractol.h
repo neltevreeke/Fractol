@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 13:04:40 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 14:18:50 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ typedef	struct	s_mlx
 */
 
 int				c_pallette(int n, t_point z, t_mlx *mlx);
+void			put_pixel_to_img(t_mlx *mlx, int x, int y, int color);
 
 /*
 **	Fractol functions
@@ -109,6 +110,7 @@ int				process_fract(t_mlx *mlx);
 */
 
 void			process_mandelbrot(t_mlx *mlx);
+void			process_julia(t_mlx *mlx);
 
 /*
 **	Error handlers
