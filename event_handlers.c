@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/27 16:16:09 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 13:52:39 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int		deal_key(int key, t_mlx *mlx)
 		mlx->max_it -= 5;
 		if (mlx->max_it < 15)
 			mlx->max_it = 15;
+	}
+	if (key == KEY_TAB)
+	{
+		mlx->tab++;
+		if (mlx->tab > 5)
+			mlx->tab = 0;
 	}
 	return (0);
 }

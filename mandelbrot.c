@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/28 14:58:48 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 11:45:15 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 	i = (y * WIDTH + x) * 4;
 	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 	{
+		mlx->data_addr[i] = color;
+		i++;
 		mlx->data_addr[i] = color >> 8;
 		i++;
 		mlx->data_addr[i] = color >> 16;
-		i++;
-		mlx->data_addr[i] = color;
 		i++;
 	}
 }

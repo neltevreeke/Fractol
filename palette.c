@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:09:09 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/28 15:13:09 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 13:52:34 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,43 @@ int			c_pallette(int n, t_point z, t_mlx *mlx)
 	//rood
 	color[2] = 255 * (bright / mlx->max_it);
 
-	// manupilates color
-	//blauw
-	// color[0] = sqrt(bright);
-	// color[2] = sqrt(bright);
+	if (mlx->tab == 0)
+	{
+		color[0] = sqrt(bright);
+		color[2] = sqrt(bright);
+	}
+	else if (mlx->tab == 1)
+		color[0] = sqrt(bright);
+	else if (mlx->tab == 2)
+	{
+		color[1] = sqrt(bright);
+		color[2] = sqrt(bright);
+	}
+	else if (mlx->tab == 3)
+		color[1] = sqrt(bright);
+	else if (mlx->tab == 4)
+		color[2] = sqrt(bright);
+	else if (mlx->tab == 5)
+	{
+		color[0] = sqrt(bright);
+		color[1] = sqrt(bright);
+	}
+	//----------------------------------- groen
+		//geel
+			// color[0] = sqrt(bright);
+		
+		// color[2] = sqrt(bright);
+		
+	// blauw
+		// magenta
+			// color[1] = sqrt(bright);
+
+		// cyan
+			// color[2] = sqrt(bright);
+
+	// rood
+		// color[0] = sqrt(bright);
+		// color[1] = sqrt(bright);
 
 	return (color[0] | (color[1] << 8) | (color[2] << 16));
 }

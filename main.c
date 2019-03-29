@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/26 14:31:59 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 13:03:53 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_mlx		*init_window(char *fractol_name)
 	mlx->data_addr = mlx_get_data_addr(mlx->image, &(mlx->bits_per_pixel), &(mlx->size_line), &(mlx->endian));
 	mlx->zoom = 1;
 	mlx->max_it = 40;
+	mlx->tab = 0;
 	return (mlx);
 }
 

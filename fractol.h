@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/28 15:12:26 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/03/29 13:04:40 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define KEY_DOWN 125
 # define KEY_X 7
 # define KEY_Z 6
+# define KEY_TAB 48
 
 /*
 **	Int mouse defines
@@ -76,6 +77,12 @@ typedef	struct	s_mlx
 	long double	zoom;
 
 	/*
+	**	color stuff
+	*/
+
+	int			tab;
+
+	/*
 	**	Pthread stuff
 	*/
 
@@ -89,7 +96,7 @@ typedef	struct	s_mlx
 **	Color functions
 */
 
-int		c_pallette(int n, t_point z, t_mlx *mlx);
+int				c_pallette(int n, t_point z, t_mlx *mlx);
 
 /*
 **	Fractol functions
