@@ -13,7 +13,7 @@
 #include "fractol.h"
 
 /*
-**	Deals with key events
+**	Deals with Julia & mandelbrot key events
 */
 
 int		deal_key(int key, t_mlx *mlx)
@@ -50,7 +50,7 @@ int		deal_key(int key, t_mlx *mlx)
 }
 
 /*
-**	Deals with mouse events
+**	Deals with julia & mandelbrot mouse events
 */
 
 int		deal_mouse(int button, int x, int y, t_mlx *mlx)
@@ -59,5 +59,15 @@ int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 		mlx->zoom *= 1.05;
 	if (button == MOUSE_UP)
 		mlx->zoom *= 0.95;
+	return (0);
+}
+
+/*
+** Deals ONLY with julia mouse event
+*/
+
+int		deal_mouse_press(int button, int x, int y, t_mlx *mlx)
+{
+
 	return (0);
 }

@@ -65,6 +65,8 @@ void		fractol(char *fractol_name)
 	mlx = init_window(fractol_name);
 	check_fractol(fractol_name, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
+	if (ft_strcmp(fractol_name, "Julia") == 0 || ft_strcmp(fractol_name, "julia") == 0)
+		mlx_hook(mlx->win, 4, 1L << 2, deal_mouse_press, mlx);
 	mlx_hook(mlx->win, 4, 1L << 2, deal_mouse, mlx);
 	mlx_loop_hook(mlx->init, process_fract, mlx);
 	mlx_loop(mlx->init);

@@ -32,8 +32,8 @@ void        *draw_julia(void *data)
 			n = 0;
 			while (n < mlx->max_it)
 			{
-				x_new = z.x * z.x - z.y * z.y - 0.8;
-				z.y = 2 * z.x * z.y + 0.156;
+				x_new = z.x * z.x - z.y * z.y - 0.7269;
+				z.y = 2 * z.x * z.y + 0.1889;
 				z.x = x_new;
 				if (fabsl(z.x + z.y) > 6)
 					break ;

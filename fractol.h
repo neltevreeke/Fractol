@@ -125,5 +125,6 @@ void			no_fractol(void);
 
 int				deal_key(int key, t_mlx *mlx);
 int				deal_mouse(int button, int x, int y, t_mlx *mlx);
+int				deal_mouse_press(int button, int x, int y, t_mlx *mlx);
 
 #endif
