@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 14:01:12 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 14:29:49 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/01 12:44:36 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void        *draw_julia(void *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			mlx->c.x = mlx->position.x + ((x - WIDTH * .5) * 4 / WIDTH) * mlx->zoom;
-			mlx->c.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) * 4 / WIDTH) * mlx->zoom;
-			z = mlx->c;
+			z.x = mlx->position.x + ((x - WIDTH * .5) * 4 / WIDTH) * mlx->zoom;
+			z.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) * 4 / WIDTH) * mlx->zoom;
 			n = 0;
 			while (n < mlx->max_it)
 			{
-				x_new = z.x * z.x - z.y * z.y - 0.7269;
-				z.y = 2 * z.x * z.y + 0.1889;
+				x_new = z.x * z.x - z.y * z.y - 0.835 + mlx->c.x / WIDTH;
+				z.y = 2 * z.x * z.y + mlx->c.y / HEIGHT;
 				z.x = x_new;
 				if (fabsl(z.x + z.y) > 6)
 					break ;

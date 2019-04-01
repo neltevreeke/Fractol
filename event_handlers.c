@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 13:52:39 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/01 12:49:24 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 		mlx->zoom *= 1.05;
 	if (button == MOUSE_UP)
 		mlx->zoom *= 0.95;
+	if (button == MOUSE_LEFT)
+		mlx->button = 1;
 	return (0);
 }
 
@@ -66,8 +68,19 @@ int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 ** Deals ONLY with julia mouse event
 */
 
-int		deal_mouse_press(int button, int x, int y, t_mlx *mlx)
+int		mouse_release(int button, int x, int y, t_mlx *mlx)
 {
+	if (mlx->button == 1)
+		mlx->button = 0;
+	return (0);
+}
 
+int		deal_move(int x, int y, t_mlx *mlx)
+{
+	if (mlx->button == 1)
+	{
+		mlx->c.x = x * 2;
+		mlx->c.y = y * 2 - 600;
+	}
 	return (0);
 }

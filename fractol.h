@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 14:18:50 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/01 12:17:46 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 **	Int mouse defines
 */
 
+# define MOUSE_LEFT 1
 # define MOUSE_UP 4
 # define MOUSE_DOWN 5
 
@@ -81,6 +82,7 @@ typedef	struct	s_mlx
 	*/
 
 	int			tab;
+	int			button;
 
 	/*
 	**	Pthread stuff
@@ -125,6 +127,8 @@ void			no_fractol(void);
 
 int				deal_key(int key, t_mlx *mlx);
 int				deal_mouse(int button, int x, int y, t_mlx *mlx);
-int				deal_mouse_press(int button, int x, int y, t_mlx *mlx);
+int				deal_move(int x, int y, t_mlx *mlx);
+int				mouse_press(int button, int x, int y, t_mlx *mlx);
+int				mouse_release(int button, int x, int y, t_mlx *mlx);
 
 #endif

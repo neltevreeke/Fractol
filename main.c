@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/29 14:06:34 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/01 12:47:45 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_mlx		*init_window(char *fractol_name)
 	mlx->zoom = 1;
 	mlx->max_it = 40;
 	mlx->tab = 0;
+	mlx->button = 0;
 	return (mlx);
 }
 
@@ -66,7 +67,10 @@ void		fractol(char *fractol_name)
 	check_fractol(fractol_name, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
 	if (ft_strcmp(fractol_name, "Julia") == 0 || ft_strcmp(fractol_name, "julia") == 0)
-		mlx_hook(mlx->win, 4, 1L << 2, deal_mouse_press, mlx);
+	{
+		mlx_hook(mlx->win, 6, 1L << 8, deal_move, mlx);
+		mlx_hook(mlx->win, 5, 1L << 3, mouse_release, mlx);
+	}
 	mlx_hook(mlx->win, 4, 1L << 2, deal_mouse, mlx);
 	mlx_loop_hook(mlx->init, process_fract, mlx);
 	mlx_loop(mlx->init);
