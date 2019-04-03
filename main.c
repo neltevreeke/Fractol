@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/01 12:47:45 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/03 12:35:35 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int			process_fract(t_mlx *mlx)
 	ft_bzero(mlx->data_addr, HEIGHT * WIDTH * (mlx->bits_per_pixel / 8));
 	mlx->process(mlx);
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->image, 0, 0);
+	mlx_string_put(mlx->init, mlx->win, 20, 20, 0xFFFFFF, "topkoek lol");
 	return (0);
 }
 
