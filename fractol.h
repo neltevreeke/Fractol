@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 12:42:10 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/04 15:45:50 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define KEY_X 7
 # define KEY_Z 6
 # define KEY_TAB 48
+# define KEY_SPACE 49
 
 /*
 **	Int mouse defines
@@ -83,6 +84,14 @@ typedef	struct	s_mlx
 
 	int			tab;
 	int			button;
+
+	/*
+	**	change live fractal
+	*/
+
+	int			space;
+	char		*fractol_name;
+	int			first_boot;
 
 	/*
 	**	Pthread stuff

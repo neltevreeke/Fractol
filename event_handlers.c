@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 13:51:04 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/04 15:48:19 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int		deal_key(int key, t_mlx *mlx)
 		if (mlx->tab > 5)
 			mlx->tab = 0;
 	}
+	if (key == KEY_SPACE)
+		mlx->space++;
+		if (mlx->space > 2)
+			mlx->space = 0;
 	return (0);
 }
 
