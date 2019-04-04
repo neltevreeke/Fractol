@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/01 12:17:46 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/04 12:42:10 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int				process_fract(t_mlx *mlx);
 
 void			process_mandelbrot(t_mlx *mlx);
 void			process_julia(t_mlx *mlx);
+void			process_burningship(t_mlx *mlx);
 
 /*
 **	Error handlers

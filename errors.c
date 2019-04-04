@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:06:19 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/03/25 11:30:20 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/04 12:36:57 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	no_params(void)
 
 void	no_fractol(void)
 {
-	ft_putendl("This is not a correct Fractol, use: Mandelbrot, Juliet, or .....");
+	ft_putendl("Usage: ./fractol [fractolname]");
+	ft_putendl("Try:\t\t -man");
+	ft_putendl("\t\t -jul");
+	ft_putendl("\t\t -bur");
 	exit(0);
 }

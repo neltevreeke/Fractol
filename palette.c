@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:09:09 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/03 12:33:28 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/03 18:21:29 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,8 @@ int			c_pallette(int n, t_point z, t_mlx *mlx)
 	int		color[3];
 
 	bright = n - log2(log2(dot_product(z))) + 4.0;
-	//blauw
 	color[0] = 255 * (bright / mlx->max_it);
-	//groen
 	color[1] = 255 * (bright / mlx->max_it);
-	//rood
 	color[2] = 255 * (bright / mlx->max_it);
 
 	if (mlx->tab == 0)
@@ -68,22 +65,5 @@ int			c_pallette(int n, t_point z, t_mlx *mlx)
 		color[0] = sqrt(bright);
 		color[1] = sqrt(bright);
 	}
-	//----------------------------------- groen
-		//geel
-			// color[0] = sqrt(bright);
-		
-		// color[2] = sqrt(bright);
-		
-	// blauw
-		// magenta
-			// color[1] = sqrt(bright);
-
-		// cyan
-			// color[2] = sqrt(bright);
-
-	// rood
-		// color[0] = sqrt(bright);
-		// color[1] = sqrt(bright);
-
 	return (color[0] | (color[1] << 8) | (color[2] << 16));
 }
