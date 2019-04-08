@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 15:53:04 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:45:01 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,49 +36,6 @@ t_mlx		*init_window(char *fractol_name)
 }
 
 /*
-**	Check what Fractol needs to be drawn.
-**	Error if Fractol does not exist and list other fractols as error.
-*/
-
-void		check_fractol(t_mlx *mlx)
-{
-	if (!(mlx->first_boot))
-	{
-		mlx->first_boot = 1;
-		if (ft_strcmp(mlx->fractol_name, "-man") == 0)
-		{
-			mlx->process = &process_mandelbrot;
-			mlx->space = 0;
-		}
-		else if (ft_strcmp(mlx->fractol_name, "-jul") == 0)
-		{
-			mlx->process = &process_julia;
-			mlx->space = 1;
-			mlx_hook(mlx->win, 6, 1L << 8, deal_move, mlx);
-		}
-		else if (ft_strcmp(mlx->fractol_name, "-bur") == 0)
-		{
-			mlx->process = &process_burningship;
-			mlx->space = 2;
-		}
-		else
-			no_fractol();
-	}
-	else if (mlx->first_boot)
-	{
-		if (mlx->space == 0)
-			mlx->process = &process_mandelbrot;
-		else if (mlx->space == 1)
-		{
-			mlx->process = &process_julia;
-			mlx_hook(mlx->win, 6, 1L << 8, deal_move, mlx);
-		}
-		else if (mlx->space == 2)
-			mlx->process = &process_burningship;
-	}
-}
-
-/*
 **	Clears image with bzero, runs draw fractol function and puts new image to window.
 */
 
@@ -97,17 +54,27 @@ int			process_fract(t_mlx *mlx)
 	return (0);
 }
 
+/*
+**	Starts the key and mouse hooks.
+**	Initiates fractol function.
+*/
+
 void		fractol(char *fractol_name)
 {
 	t_mlx	*mlx;
 
 	mlx = init_window(fractol_name);
 	check_fractol(mlx);
-	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
 	mlx_hook(mlx->win, 4, 1L << 2, deal_mouse, mlx);
+	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
 	mlx_loop_hook(mlx->init, process_fract, mlx);
 	mlx_loop(mlx->init);
 }
+
+/*
+**	Checks number of arguments.
+**	intiates fractal program.
+*/
 
 int			main(int argc, char **argv)
 {

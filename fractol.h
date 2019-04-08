@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 15:45:50 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:37:04 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define HEIGHT 600
 # define WIDTH	1000
 # define MEM(x) (x*)ft_memalloc(sizeof(x))
-# define NUM_THREADS 100
+# define NUM_THREADS 150
 
 /*
 **	Int key defines
@@ -115,6 +115,8 @@ void			put_pixel_to_img(t_mlx *mlx, int x, int y, int color);
 */
 
 int				process_fract(t_mlx *mlx);
+void			check_fractol_boot(t_mlx *mlx);
+void			check_fractol(t_mlx *mlx);
 
 /*
 **	Pthread functions
@@ -136,6 +138,7 @@ void			no_fractol(void);
 */
 
 int				deal_key(int key, t_mlx *mlx);
+int				deal_arrow(int key, t_mlx *mlx);
 int				deal_mouse(int button, int x, int y, t_mlx *mlx);
 int				deal_move(int x, int y, t_mlx *mlx);
 int				mouse_press(int button, int x, int y, t_mlx *mlx);

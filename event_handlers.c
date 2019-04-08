@@ -6,28 +6,18 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 15:48:19 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:46:33 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /*
-**	Deals with Julia & mandelbrot key events
+**	Captures and deals with fractak key events
 */
 
 int		deal_key(int key, t_mlx *mlx)
 {
-	if (key == KEY_ESC)
-		exit(0);
-	if (key == KEY_UP)
-		mlx->position.y -= 0.05 * mlx->zoom;
-	if (key == KEY_DOWN)
-		mlx->position.y += 0.05 * mlx->zoom;
-	if (key == KEY_LEFT)
-		mlx->position.x -= 0.05 * mlx->zoom;
-	if (key == KEY_RIGHT)
-		mlx->position.x += 0.05 * mlx->zoom;
 	if (key == KEY_X)
 	{
 		mlx->max_it += 5;
@@ -50,11 +40,31 @@ int		deal_key(int key, t_mlx *mlx)
 		mlx->space++;
 		if (mlx->space > 2)
 			mlx->space = 0;
+	deal_arrow(key, mlx);
 	return (0);
 }
 
 /*
-**	Deals with julia & mandelbrot mouse events
+**	Captures and deals with fractal arrow key events.
+*/
+
+int		deal_arrow(int key, t_mlx *mlx)
+{
+	if (key == KEY_ESC)
+		exit(0);
+	if (key == KEY_UP)
+		mlx->position.y -= 0.05 * mlx->zoom;
+	if (key == KEY_DOWN)
+		mlx->position.y += 0.05 * mlx->zoom;
+	if (key == KEY_LEFT)
+		mlx->position.x -= 0.05 * mlx->zoom;
+	if (key == KEY_RIGHT)
+		mlx->position.x += 0.05 * mlx->zoom;
+	return (0);
+}
+
+/*
+**	Deals with fractal mouse events
 */
 
 int		deal_mouse(int button, int x, int y, t_mlx *mlx)

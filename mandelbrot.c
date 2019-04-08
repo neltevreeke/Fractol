@@ -6,11 +6,15 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/01 13:35:51 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:48:12 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+**	Calculates the fractal.
+*/
 
 void		calc_mandelbrot(t_mlx *mlx, t_point z, int x, int n)
 {
@@ -37,6 +41,10 @@ void		calc_mandelbrot(t_mlx *mlx, t_point z, int x, int n)
 	}
 }
 
+/*
+**	Draws the fractal on the screen.
+*/
+
 void		*draw_mandelbrot(void *data)
 {
 	int x;
@@ -53,6 +61,10 @@ void		*draw_mandelbrot(void *data)
 	}
 	return (data);
 }
+
+/*
+**	Creates multiple threads to make the fractal drawing functions faster.
+*/
 
 void		process_mandelbrot(t_mlx *mlx)
 {

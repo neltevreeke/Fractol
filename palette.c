@@ -6,17 +6,24 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:09:09 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/03 18:21:29 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:52:42 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+**	Calculation needed to calculate the brightness (opacity) of the pixel.
+*/
 
 double		dot_product(t_point p)
 {
 	return (p.x * p.x + p.y * p.y);
 }
 
+/*
+**	Colors the pixels in the screen
+*/
 
 void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 {
@@ -33,6 +40,10 @@ void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 		i++;
 	}
 }
+
+/*
+**	Creates, calculates and manipulates colors.
+*/
 
 int			c_pallette(int n, t_point z, t_mlx *mlx)
 {

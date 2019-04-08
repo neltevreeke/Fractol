@@ -6,11 +6,15 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/04 12:37:35 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 14:25:25 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:48:45 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+**	Calculates the fractal.
+*/
 
 void		calc_burningship(t_mlx *mlx, t_point z, int x, int n)
 {
@@ -37,6 +41,10 @@ void		calc_burningship(t_mlx *mlx, t_point z, int x, int n)
 	}
 }
 
+/*
+**	Draws the fractal.
+*/
+
 void		*draw_burningship(void *data)
 {
 	int x;
@@ -53,6 +61,10 @@ void		*draw_burningship(void *data)
 	}
 	return (data);
 }
+
+/*
+**	Creates multiple threads to make the fractal drawing functions faster.
+*/
 
 void		process_burningship(t_mlx *mlx)
 {

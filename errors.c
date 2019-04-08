@@ -6,17 +6,25 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:06:19 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/04 12:36:57 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 12:50:24 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+**	Puts error on the output if there are no parameters given.
+*/
 
 void	no_params(void)
 {
 	ft_putendl("Usage: ./fractol [fractolname]");
 	exit(0);
 }
+
+/*
+**	Puts error on the output if there are no valid fractals given.
+*/
 
 void	no_fractol(void)
 {
