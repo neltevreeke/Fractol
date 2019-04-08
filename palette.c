@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/27 12:09:09 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 12:52:42 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 14:11:29 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,11 @@ void		put_pixel_to_img(t_mlx *mlx, int x, int y, int color)
 }
 
 /*
-**	Creates, calculates and manipulates colors.
+**	Manipulates colors.
 */
 
-int			c_pallette(int n, t_point z, t_mlx *mlx)
+int			*manipulate_pallette(int *color, int bright, t_mlx *mlx)
 {
-	double	bright;
-	int		color[3];
-
-	bright = n - log2(log2(dot_product(z))) + 4.0;
-	color[0] = 255 * (bright / mlx->max_it);
-	color[1] = 255 * (bright / mlx->max_it);
-	color[2] = 255 * (bright / mlx->max_it);
-
 	if (mlx->tab == 0)
 	{
 		color[0] = sqrt(bright);
@@ -76,5 +68,22 @@ int			c_pallette(int n, t_point z, t_mlx *mlx)
 		color[0] = sqrt(bright);
 		color[1] = sqrt(bright);
 	}
+	return (color);
+}
+
+/*
+**	Creates, calculates.
+*/
+
+int			c_pallette(int n, t_point z, t_mlx *mlx)
+{
+	double	bright;
+	int		color[3];
+
+	bright = n - log2(log2(dot_product(z))) + 4.0;
+	color[0] = 255 * (bright / mlx->max_it);
+	color[1] = 255 * (bright / mlx->max_it);
+	color[2] = 255 * (bright / mlx->max_it);
+	manipulate_pallette(color, bright, mlx);
 	return (color[0] | (color[1] << 8) | (color[2] << 16));
 }

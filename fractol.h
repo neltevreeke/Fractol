@@ -6,19 +6,19 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 12:37:04 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 14:01:50 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include "minilibx_macos/mlx.h"
-#include "libft/libft.h"
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <pthread.h>
+# include "minilibx_macos/mlx.h"
+# include "libft/libft.h"
+# include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <pthread.h>
 
 # define HEIGHT 600
 # define WIDTH	1000
@@ -47,59 +47,32 @@
 # define MOUSE_UP 4
 # define MOUSE_DOWN 5
 
-typedef struct s_point
+typedef struct	s_point
 {
 	long double x;
 	long double y;
 }				t_point;
 
-
 typedef	struct	s_mlx
 {
-	/*
-	**	Program pointers
-	*/
-
 	void		*win;
 	void		*init;
-	
-	/*
-	**	Image stuff
-	*/
-
 	void		*image;
 	char		*data_addr;
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
-
 	t_point		position;
 	t_point		c;
 	int			max_it;
 	long double	zoom;
-
-	/*
-	**	color stuff
-	*/
-
 	int			tab;
 	int			button;
-
-	/*
-	**	change live fractal
-	*/
-
 	int			space;
 	char		*fractol_name;
 	int			first_boot;
-
-	/*
-	**	Pthread stuff
-	*/
-
 	int			cur_y;
 	int			max_y;
-	
 	void		(*process)(struct s_mlx *mlx);
 }				t_mlx;
 

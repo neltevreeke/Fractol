@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/04 12:37:35 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 12:48:45 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 13:58:30 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void		calc_burningship(t_mlx *mlx, t_point z, int x, int n)
 	while (x < WIDTH)
 	{
 		mlx->c.x = mlx->position.x + ((x - WIDTH * .5) * 4 / WIDTH) * mlx->zoom;
-		mlx->c.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) * 4 / WIDTH) * mlx->zoom;
+		mlx->c.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) \
+		* 4 / WIDTH) * mlx->zoom;
 		z = mlx->c;
 		n = 0;
 		while (n < mlx->max_it)
@@ -47,10 +48,10 @@ void		calc_burningship(t_mlx *mlx, t_point z, int x, int n)
 
 void		*draw_burningship(void *data)
 {
-	int x;
-	t_point z;
-	t_mlx *mlx;
-	int n;
+	int		x;
+	t_point	z;
+	t_mlx	*mlx;
+	int		n;
 
 	mlx = (t_mlx*)data;
 	while (mlx->cur_y < mlx->max_y)

@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 12:46:33 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 14:00:49 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ int		deal_key(int key, t_mlx *mlx)
 		if (mlx->max_it < 15)
 			mlx->max_it = 15;
 	}
-	if (key == KEY_TAB)
-	{
-		mlx->tab++;
-		if (mlx->tab > 5)
-			mlx->tab = 0;
-	}
 	if (key == KEY_SPACE)
+	{
 		mlx->space++;
 		if (mlx->space > 2)
 			mlx->space = 0;
+	}
 	deal_arrow(key, mlx);
 	return (0);
 }
@@ -60,6 +56,12 @@ int		deal_arrow(int key, t_mlx *mlx)
 		mlx->position.x -= 0.05 * mlx->zoom;
 	if (key == KEY_RIGHT)
 		mlx->position.x += 0.05 * mlx->zoom;
+	if (key == KEY_TAB)
+	{
+		mlx->tab++;
+		if (mlx->tab > 5)
+			mlx->tab = 0;
+	}
 	return (0);
 }
 

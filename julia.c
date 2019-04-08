@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 14:01:12 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 12:48:17 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 14:03:32 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 
 void		calc_julia(t_mlx *mlx, t_point z, int x, int n)
 {
-	double x_new;
+	double	x_new;
 
 	while (x < WIDTH)
 	{
 		z.x = mlx->position.x + ((x - WIDTH * .5) * 4 / WIDTH) * mlx->zoom;
-		z.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) * 4 / WIDTH) * mlx->zoom;
+		z.y = mlx->position.y + ((mlx->cur_y - HEIGHT * .5) \
+		* 4 / WIDTH) * mlx->zoom;
 		n = 0;
 		while (n < mlx->max_it)
 		{
@@ -44,12 +45,12 @@ void		calc_julia(t_mlx *mlx, t_point z, int x, int n)
 **	Draws the fractal on the screen.
 */
 
-void     	   *draw_julia(void *data)
+void		*draw_julia(void *data)
 {
-    int x;
-	t_point z;
-	t_mlx *mlx;
-	int n;
+	int		x;
+	t_point	z;
+	t_mlx	*mlx;
+	int		n;
 
 	mlx = (t_mlx*)data;
 	while (mlx->cur_y < mlx->max_y)
@@ -58,7 +59,7 @@ void     	   *draw_julia(void *data)
 		calc_julia(mlx, z, x, n);
 		mlx->cur_y++;
 	}
-    return (data);
+	return (data);
 }
 
 /*
