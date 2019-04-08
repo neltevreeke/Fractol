@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:01:50 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 17:17:53 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 # define HEIGHT 600
 # define WIDTH	1000
@@ -110,6 +111,7 @@ void			no_fractol(void);
 **	Event (key, mouse) handlers
 */
 
+int				exit_x(void *nul);
 int				deal_key(int key, t_mlx *mlx);
 int				deal_arrow(int key, t_mlx *mlx);
 int				deal_mouse(int button, int x, int y, t_mlx *mlx);

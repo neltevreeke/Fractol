@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:05:06 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 17:31:38 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,46 @@ t_mlx		*init_window(char *fractol_name)
 **	runs draw fractol function and puts new image to window.
 */
 
+
+double		get_cur_time(void)
+{
+	double time_in_mill;
+	struct timeval  tv;
+	
+	gettimeofday(&tv, NULL);
+	time_in_mill = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
+	return(time_in_mill);
+}
+
+char		*get_fps(char *str)
+{
+	static double	start_time;
+	static int		frames;
+	static int		last_fps;
+
+	frames++;
+	if (get_cur_time() > start_time + 1000)
+	{
+		start_time = get_cur_time();
+		last_fps = frames;
+		frames = 0;
+	}
+	str = ft_itoa(last_fps);
+	return(str);
+}
+
 int			process_fract(t_mlx *mlx)
 {
+	char	*str;
+
+	str = get_fps(str);
 	ft_bzero(mlx->data_addr, HEIGHT * WIDTH * (mlx->bits_per_pixel / 8));
 	mlx->process(mlx);
 	check_fractol(mlx);
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->image, 0, 0);
+	mlx_string_put(mlx->init, mlx->win, 960, 20, 0xFFFFFF, \
+	str);
+	free(str);
 	mlx_string_put(mlx->init, mlx->win, 20, 20, 0xFFFFFF, \
 	"Zoom in/out: Mousewheel");
 	mlx_string_put(mlx->init, mlx->win, 20, 35, 0xFFFFFF, \
@@ -75,6 +109,7 @@ void		fractol(char *fractol_name)
 	check_fractol(mlx);
 	mlx_hook(mlx->win, 4, 1L << 2, deal_mouse, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
+	mlx_hook(mlx->win, 17, 1L<<19, exit_x, NULL);
 	mlx_loop_hook(mlx->init, process_fract, mlx);
 	mlx_loop(mlx->init);
 }

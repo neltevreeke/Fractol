@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:00:49 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 14:22:50 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,10 @@ int		deal_move(int x, int y, t_mlx *mlx)
 		mlx->c.y = y * 2 - 600;
 	}
 	return (0);
+}
+
+int		exit_x(void *nul)
+{
+	(void)nul;
+	exit(0);
 }
