@@ -6,13 +6,13 @@
 #    By: nvreeke <nvreeke@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/02/22 13:27:36 by nvreeke        #+#    #+#                 #
-#    Updated: 2019/04/08 14:18:12 by nvreeke       ########   odam.nl          #
+#    Updated: 2019/04/08 18:19:04 by nvreeke       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 BINARY = fractol
 SRCS = burningship.c check_fractol.c errors.c event_handlers.c \
-julia.c main.c mandelbrot.c palette.c
+julia.c main.c mandelbrot.c palette.c utils.c
 FLAGS = -L minilibx_macos/ -lmlx -framework OpenGL -framework AppKit -o $(BINARY)
 GCC = gcc
 LIBS = ./libft/libft.a

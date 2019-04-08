@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:03:10 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 17:17:53 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/08 18:17:35 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,13 @@ void			put_pixel_to_img(t_mlx *mlx, int x, int y, int color);
 int				process_fract(t_mlx *mlx);
 void			check_fractol_boot(t_mlx *mlx);
 void			check_fractol(t_mlx *mlx);
+
+/*
+**	FPS meter functions
+*/
+
+char			*get_fps(char *str);
+double			get_cur_time(void);
 
 /*
 **	Pthread functions
