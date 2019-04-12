@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 14:18:18 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:22:50 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/11 11:20:45 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int		deal_arrow(int key, t_mlx *mlx)
 
 int		deal_mouse(int button, int x, int y, t_mlx *mlx)
 {
+	(void)x;
+	(void)y;
 	if (button == MOUSE_DOWN)
 		mlx->zoom *= 1.05;
 	if (button == MOUSE_UP)

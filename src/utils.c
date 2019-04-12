@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/08 18:16:45 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/09 11:59:07 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/11 11:26:27 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 double		get_cur_time(void)
 {
-	double	time_in_mill;
-	struct	timeval	tv;
+	double			time_in_mill;
+	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	time_in_mill = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
-	return(time_in_mill);
+	return (time_in_mill);
 }
 
 /*
@@ -44,5 +44,5 @@ char		*get_fps(char *str)
 		frames = 0;
 	}
 	str = ft_itoa(last_fps);
-	return(str);
+	return (str);
 }

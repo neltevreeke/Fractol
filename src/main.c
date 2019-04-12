@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 12:01:26 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 18:21:20 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/11 11:17:16 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			process_fract(t_mlx *mlx)
 {
 	char	*str;
 
+	str = NULL;
 	str = get_fps(str);
 	ft_bzero(mlx->data_addr, HEIGHT * WIDTH * (mlx->bits_per_pixel / 8));
 	mlx->process(mlx);
@@ -53,6 +54,16 @@ int			process_fract(t_mlx *mlx)
 	mlx_string_put(mlx->init, mlx->win, 960, 20, 0xFFFFFF, \
 	str);
 	free(str);
+	put_ui(mlx);
+	return (0);
+}
+
+/*
+**	Puts the interface in the window.
+*/
+
+void		put_ui(t_mlx *mlx)
+{
 	mlx_string_put(mlx->init, mlx->win, 910, 20, 0xFFFFFF, \
 	"Fps: ");
 	mlx_string_put(mlx->init, mlx->win, 20, 20, 0xFFFFFF, \
@@ -67,7 +78,6 @@ int			process_fract(t_mlx *mlx)
 	"Decrease/increase detail: z/x");
 	mlx_string_put(mlx->init, mlx->win, 20, 95, 0xFFFFFF, \
 	"Exit: Esc");
-	return (0);
 }
 
 /*
@@ -83,7 +93,7 @@ void		fractol(char *fractol_name)
 	check_fractol(mlx);
 	mlx_hook(mlx->win, 4, 1L << 2, deal_mouse, mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, deal_key, mlx);
-	mlx_hook(mlx->win, 17, 1L<<19, exit_x, NULL);
+	mlx_hook(mlx->win, 17, 1L << 19, exit_x, NULL);
 	mlx_loop_hook(mlx->init, process_fract, mlx);
 	mlx_loop(mlx->init);
 }

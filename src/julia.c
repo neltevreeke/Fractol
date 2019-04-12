@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/29 14:01:12 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:03:32 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/11 11:13:00 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ void		*draw_julia(void *data)
 	t_mlx	*mlx;
 	int		n;
 
+	n = 0;
+	z.y = 0;
+	z.x = 0;
 	mlx = (t_mlx*)data;
 	while (mlx->cur_y < mlx->max_y)
 	{

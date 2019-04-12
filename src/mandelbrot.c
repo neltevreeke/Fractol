@@ -6,7 +6,7 @@
 /*   By: nvreeke <nvreeke@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/22 17:04:03 by nvreeke        #+#    #+#                */
-/*   Updated: 2019/04/08 14:05:38 by nvreeke       ########   odam.nl         */
+/*   Updated: 2019/04/11 11:13:20 by nvreeke       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ void		*draw_mandelbrot(void *data)
 	t_mlx	*mlx;
 	int		n;
 
+	n = 0;
+	z.y = 0;
+	z.x = 0;
 	mlx = (t_mlx*)data;
 	while (mlx->cur_y < mlx->max_y)
 	{
